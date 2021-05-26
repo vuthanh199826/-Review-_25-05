@@ -68,10 +68,28 @@ public class Manage {
                 if (option == 1) {
                     return o1.getValue().getName().compareTo(o2.getValue().getName());
                 } else if (option == 2) {
-                    if (o1.getValue().getDiemTrungBinh() == o2.getValue().getDiemTrungBinh()) {
-                        return (int) (o1.getValue().getDiemToan() - o2.getValue().getDiemToan());
-                    } else {
-                        return (int) (o1.getValue().getDiemTrungBinh() - o2.getValue().getDiemTrungBinh());
+                    if(o1.getValue().getDiemTrungBinh() < o2.getValue().getDiemTrungBinh()){
+                        return 1;
+                    }else if (o1.getValue().getDiemTrungBinh()==o2.getValue().getDiemTrungBinh()){
+                        if (o1.getValue().getDiemToan()<o2.getValue().getDiemToan()){
+                            return 1;
+                        }else if(o1.getValue().getDiemToan()==o2.getValue().getDiemToan()){
+                            if (o1.getValue().getDiemVan()<o2.getValue().getDiemVan()){
+                                return 1;
+                            }else if(o1.getValue().getDiemVan()==o2.getValue().getDiemVan()){
+                                if (o1.getValue().getDiemTiengAnh()<o2.getValue().getDiemTiengAnh()){
+                                    return 1;
+                                }else {
+                                    return -1;
+                                }
+                            }else {
+                                return -1;
+                            }
+                        }else {
+                            return -1;
+                        }
+                    }else {
+                        return -1;
                     }
                 } else {
                     return o1.getValue().getMsv().compareTo(o2.getValue().getMsv());
